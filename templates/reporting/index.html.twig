@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reporting{% endblock %}
+
+{% block body %}
+    <h1>Reporting </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reporting in reportings %}
+            <tr>
+                <td>{{ reporting.id }}</td>
+                <td>{{ reporting.value }}</td>
+                <td>
+                    <button class="btn btn-primary"><a id="white" href="{{ path('reporting_show', {'id': reporting.id}) }}">show</a></button>
+                    <button class="btn btn-primary"><a id="white" href="{{ path('reporting_edit', {'id': reporting.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-success"><a id="create" href="{{ path('reporting_new') }}">Create new</a></button>
+{% endblock %}

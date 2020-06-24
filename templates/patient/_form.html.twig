@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+
+<div class="row justify-content-center pt-5 pt-md-0">
+<div class="col-8">
+    {{ form_widget(form.name) }}
+    {{ form_widget(form.age) }}
+    {{ form_widget(form.culture) }}
+
+</div>
+</div>
+    
+
+
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <button id="success" class="btn btn-success">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Translation {% endblock %}
+
+{% block body %}
+    <h1>Translation</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Vocal</th>
+                <th>Image</th>
+                <th>Phrase</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for translation in translations %}
+            <tr>
+                <td>{{ translation.id }}</td>
+                <td>{{ translation.code }}</td>
+                <td>{{ translation.vocal }}</td>
+                <td>{{ translation.image }}</td>
+                <td>{{ translation.phrase }}</td>
+                <td>
+                    <button class="btn btn-primary"><a id="white" href="{{ path('translation_show', {'id': translation.id}) }}">show</a></button>
+                    <button class="btn btn-warning"><a id="white" href="{{ path('translation_edit', {'id': translation.id}) }}" >edit </a></button>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-success"><a id="create" href="{{ path('translation_new') }}">Create new</a></button>
+{% endblock %}

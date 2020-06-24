@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Translation{% endblock %}
+
+{% block body %}
+    <h1>Translation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ translation.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ translation.code }}</td>
+            </tr>
+            <tr>
+                <th>Vocal</th>
+                <td>{{ translation.vocal }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ translation.image }}</td>
+            </tr>
+            <tr>
+                <th>Phrase</th>
+                <td>{{ translation.phrase }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a id="backtl" href="{{ path('translation_index') }}">back to list</a>
+    <button class="btn btn-warning"><a id="white" href="{{ path('translation_edit', {'id': translation.id}) }}">edit</a></button>
+
+
+    {{ include('translation/_delete_form.html.twig') }}
+{% endblock %}

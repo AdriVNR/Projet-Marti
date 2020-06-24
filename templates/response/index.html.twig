@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Response{% endblock %}
+
+{% block body %}
+    <h1>Response </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Trig</th>
+                <th>Value</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for response in responses %}
+            <tr>
+                <td>{{ response.id }}</td>
+                <td>{{ response.code }}</td>
+                <td>{{ response.trig }}</td>
+                <td>{{ response.value }}</td>
+                <td>
+                    <button class="btn btn-primary"><a id="white" href="{{ path('response_show', {'id': response.id}) }}">show</a></button>
+                    <button class="btn btn-warning"><a id="white" href="{{ path('response_edit', {'id': response.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-success"><a id="create" href="{{ path('response_new') }}">Create new</a></button>
+{% endblock %}

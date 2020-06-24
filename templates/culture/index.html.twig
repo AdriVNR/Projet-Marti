@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Culture{% endblock %}
+
+{% block body %}
+    <h1>Culture </h1>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Flag</th>
+                <th>Locale</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+        {% for culture in cultures %}
+            <tr>
+                <td>{{ culture.id }}</td>
+                <td><img src="{{asset('img/flags/')}}{{ culture.flag }}" height="50px" alt="{{ culture.locale }}.png"></td>
+                
+                <td>{{ culture.locale }}</td>
+                <td>
+                    <button href="{{ path('culture_show', {'id': culture.id}) }}" id="white" class="btn btn-primary">show</button>
+                    <button href="{{ path('culture_edit', {'id': culture.id}) }}" id="white" class="btn btn-warning">edit</button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-success"><a id="create" href="{{ path('culture_new') }}">Create new</a></button>    
+{% endblock %}

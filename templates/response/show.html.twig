@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Response{% endblock %}
+
+{% block body %}
+    <h1>Response</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ response.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ response.code }}</td>
+            </tr>
+            <tr>
+                <th>Trig</th>
+                <td>{{ response.trig }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ response.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a id="backtl" href="{{ path('response_index') }}">back to list</a>
+    <button class="btn btn-warning"><a id="white" href="{{ path('response_edit', {'id': response.id}) }}">edit</a></button>
+
+
+    {{ include('response/_delete_form.html.twig') }}
+
+    {{ form_start(questionForm) }}
+    
+    {{ form_widget(questionForm) }}
+    
+    
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    {{ form_end(questionForm) }}
+
+{% endblock %}

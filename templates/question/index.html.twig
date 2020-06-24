@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question {% endblock %}
+
+{% block body %}
+    <h1>Question </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Layout</th>
+                <th>Duplicable</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td>{{ question.id }}</td>
+                <td>{{ question.code }}</td>
+                <td>{{ question.layout }}</td>
+                <td>{{ question.duplicable ? 'Yes' : 'No' }}</td>
+                <td>
+                    <button class="btn btn-primary"><a id="white" href="{{ path('question_show', {'id': question.id}) }}">show</a></button>
+                    <button class="btn btn-warning"><a id="white" href="{{ path('question_edit', {'id': question.id}) }}">edit</a></button>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-success"><a id="create" href="{{ path('question_new') }}">Create new</a></button>
+{% endblock %}
